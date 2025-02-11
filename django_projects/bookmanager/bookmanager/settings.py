@@ -25,6 +25,7 @@ SECRET_KEY = '_s$=3#*sdikp1$mo^$aep25j!6-%2a(__j=)6g-2(da66o*xm4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 允许写入白名单的主机进行网络访问
 ALLOWED_HOSTS = []
 
 
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'book',  # 注册子应用
+    'book.apps.BookConfig',  # 注册子应用
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'bookmanager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,8 +78,15 @@ WSGI_APPLICATION = 'bookmanager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': 'root',
+        'PASSWORD': 'Wanliyu814',
+        # 本地数据库可以留空
+        'HOST': '',
+        'PORT': 3306,
+        'NAME': 'dj_book_2',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
 }
 
 
@@ -119,3 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/')
+]
