@@ -77,16 +77,15 @@ WSGI_APPLICATION = 'bookmanager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
         'PASSWORD': 'Wanliyu814',
         # 本地数据库可以留空
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': 3306,
-        'NAME': 'dj_book_2',
+        'NAME': 'dj_book_3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
 }
 
 
